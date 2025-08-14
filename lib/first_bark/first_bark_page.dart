@@ -4,6 +4,7 @@ import 'package:sound_classification/sound_classification_flutter_plugin.dart';
 import 'package:barknito/sound_eventization/sound_events_manager.dart';
 import 'package:barknito/first_bark/first_bark_state.dart';
 import 'package:barknito/first_bark/blinking_dot.dart';
+import 'package:barknito/typography.dart';
 
 class FirstBarkPage extends StatefulWidget {
   final PageController pageController;
@@ -72,13 +73,8 @@ class _FirstBarkPageState extends State<FirstBarkPage> {
             ),
             const SizedBox(height: 32),
             Image.asset('assets/images/fire.png'),
-            Text(
+            const NarrationWhite(
               'Summon the loud spirit out of him, we\'ll wait by the fire',
-              style: TextStyle(
-                fontFamily: 'Barrio',
-                fontSize: 30,
-                color: Colors.white,
-              ),
             ),
           ],
         ),
