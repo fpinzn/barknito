@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:barknito/first_bark/blinking_dot.dart';
 import 'package:barknito/first_bark/blinking_dot_with_text.dart';
 import 'package:barknito/first_bark/first_bark_page.dart';
+import 'package:barknito/five_barks/five_barks_page.dart';
 import 'package:barknito/typography.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
@@ -37,21 +38,14 @@ class _MyAppState extends State<MyApp> {
         children: <Widget>[
           FirstBarkPage(pageController: controller),
           FirstBarkDone(),
+          FiveBarksPage(pageController: controller),
           Container(
               height: 700,
               color: Colors.red,
               child: Center(child: Text('Page 1'))),
-          Container(
-              height: 700,
-              color: Colors.blue,
-              child: Center(child: Text('Page 2'))),
-          Container(
-              height: 700,
-              color: Colors.green,
-              child: Center(child: Text('Page 3'))),
         ],
       )
-          // FirstBarkPage(),
+          // FirstBarsPage(),
           ),
     );
   }

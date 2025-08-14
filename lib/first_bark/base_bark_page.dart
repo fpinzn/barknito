@@ -1,22 +1,15 @@
-import 'package:barknito/first_bark/base_bark_page.dart';
 import 'package:flutter/material.dart';
 
 import 'package:sound_classification/sound_classification_flutter_plugin.dart';
 import 'package:barknito/sound_eventization/sound_events_manager.dart';
 import 'package:barknito/first_bark/first_bark_state.dart';
-import 'package:barknito/first_bark/blinking_dot.dart';
-import 'package:barknito/typography.dart';
 
-class FirstBarkPage extends BaseBarkPage {
+abstract class BaseBarkPage extends StatefulWidget {
   final PageController pageController;
-  const FirstBarkPage({super.key, required this.pageController})
-      : super(pageController: pageController);
-
-  @override
-  State<FirstBarkPage> createState() => _FirstBarkPageState();
+  const BaseBarkPage({super.key, required this.pageController});
 }
 
-class _FirstBarkPageState extends BaseBarkPageState<FirstBarkPage> {
+abstract class BaseBarkPageState<T extends BaseBarkPage> extends State<T> {
   late final BarkDetectionManager _barkDetectionManager;
   late final FirstBarkState _state;
   late final VoidCallback _stateListener;
@@ -57,30 +50,5 @@ class _FirstBarkPageState extends BaseBarkPageState<FirstBarkPage> {
       probabilityThreshold: 0.6,
     );
     _barkDetectionManager.start();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.black,
-      child: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const BlinkingDot(),
-              ],
-            ),
-            const SizedBox(height: 32),
-            Image.asset('assets/images/fire.png'),
-            const NarrationWhite(
-              'Summon the loud spirit out of him, we\'ll wait by the fire',
-            ),
-          ],
-        ),
-      ),
-    );
   }
 }

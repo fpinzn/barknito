@@ -1,12 +1,12 @@
 import 'package:barknito/game_state/game_state.dart';
 import 'package:flutter/material.dart';
 
-class FirstBarkState extends GameState {
-  static const String FIRST_BARK_GAME_NAME = 'first_bark';
+class FiveBarksState extends GameState {
+  static const String FIVE_BARKS_GAME_NAME = 'five_barks';
   final PageController pageController;
   bool _advanced = false;
-  FirstBarkState({required this.pageController})
-      : super(FIRST_BARK_GAME_NAME, 1);
+  FiveBarksState({required this.pageController})
+      : super(FIVE_BARKS_GAME_NAME, 5);
 
   @override
   void addTaskCompleted(String task) {

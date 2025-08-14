@@ -3,9 +3,12 @@ import 'package:flutter/material.dart';
 
 class GameState extends ChangeNotifier {
   static const int BARK_WINDOW_MS = 500;
+  static const String BARK_TASK_NAME = 'bark';
+  static const String NITO_TASK_NAME = 'nito';
 
   bool sessionActive = false;
   List<InteractionEvent<String>> soundClassificationHistory = [];
+  List<InteractionEvent<String>> tasksCompletedHistory = [];
   late String gameName;
   late int tasksRequired;
 
@@ -24,6 +27,11 @@ class GameState extends ChangeNotifier {
   void addSoundClassification(String sound) {
     soundClassificationHistory.add(InteractionEvent(sound, DateTime.now()));
     asyncNotifyListeners("addSoundClassification");
+  }
+
+  void addTaskCompleted(String task) {
+    tasksCompletedHistory.add(InteractionEvent(task, DateTime.now()));
+    asyncNotifyListeners("addTaskCompleted");
   }
 
   Future<void> asyncNotifyListeners(String caller) async {
