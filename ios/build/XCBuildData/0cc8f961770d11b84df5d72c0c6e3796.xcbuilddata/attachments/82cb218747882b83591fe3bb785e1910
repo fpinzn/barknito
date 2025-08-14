@@ -1,0 +1,5 @@
+ extern const unsigned char sound_analysis_flutter_pluginVersionString[];
+ extern const double sound_analysis_flutter_pluginVersionNumber;
+
+ const unsigned char sound_analysis_flutter_pluginVersionString[] __attribute__ ((used)) = "@(#)PROGRAM:sound_analysis_flutter_plugin  PROJECT:Pods-1" "\n";
+ const double sound_analysis_flutter_pluginVersionNumber __attribute__ ((used)) = (double)1.;

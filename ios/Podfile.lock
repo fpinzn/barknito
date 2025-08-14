@@ -1,0 +1,28 @@
+PODS:
+  - Flutter (1.0.0)
+  - integration_test (0.0.1):
+    - Flutter
+  - sound_classification (0.0.1):
+    - Flutter
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - integration_test (from `.symlinks/plugins/integration_test/ios`)
+  - sound_classification (from `.symlinks/plugins/sound_classification/ios`)
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  integration_test:
+    :path: ".symlinks/plugins/integration_test/ios"
+  sound_classification:
+    :path: ".symlinks/plugins/sound_classification/ios"
+
+SPEC CHECKSUMS:
+  Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
+  integration_test: ce0a3ffa1de96d1a89ca0ac26fca7ea18a749ef4
+  sound_classification: c574b5b2a711cbc7e4f4043c2b92fa7638c9c052
+
+PODFILE CHECKSUM: 9c46fd01abff66081b39f5fa5767b3f1d0b11d76
+
+COCOAPODS: 1.16.2

@@ -1,0 +1,23 @@
+{
+  'version': 0,
+  'use-external-names': 'false',
+  'case-sensitive': 'false',
+  'roots': [{
+    'type': 'directory',
+    'name': "/Users/francisco/dev/sound_analysis_flutter_plugin/example/ios/build/Release-iphoneos/sound_analysis_flutter_plugin/sound_analysis_flutter_plugin.framework/Modules"
+    'contents': [{
+      'type': 'file',
+      'name': "module.modulemap",
+      'external-contents': "/Users/francisco/dev/sound_analysis_flutter_plugin/example/ios/build/Pods.build/Release-iphoneos/sound_analysis_flutter_plugin.build/unextended-module.modulemap",
+    }]
+    },
+    {
+    'type': 'directory',
+    'name': "/Users/francisco/dev/sound_analysis_flutter_plugin/example/ios/build/Release-iphoneos/sound_analysis_flutter_plugin/sound_analysis_flutter_plugin.framework/Headers"
+    'contents': [{
+      'type': 'file',
+      'name': "sound_analysis_flutter_plugin-Swift.h",
+      'external-contents': "/Users/francisco/dev/sound_analysis_flutter_plugin/example/ios/build/Pods.build/Release-iphoneos/sound_analysis_flutter_plugin.build/unextended-interface-header.h",
+    }]
+    }]
+}

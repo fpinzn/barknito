@@ -1,0 +1,20 @@
+{
+  "" : {
+    "const-values" : "/Users/francisco/dev/sound_analysis_flutter_plugin/example/ios/build/Pods.build/Release-iphoneos/sound_analysis_flutter_plugin.build/Objects-normal/arm64/sound_analysis_flutter_plugin-master.swiftconstvalues",
+    "dependencies" : "/Users/francisco/dev/sound_analysis_flutter_plugin/example/ios/build/Pods.build/Release-iphoneos/sound_analysis_flutter_plugin.build/Objects-normal/arm64/sound_analysis_flutter_plugin-master.d",
+    "diagnostics" : "/Users/francisco/dev/sound_analysis_flutter_plugin/example/ios/build/Pods.build/Release-iphoneos/sound_analysis_flutter_plugin.build/Objects-normal/arm64/sound_analysis_flutter_plugin-master.dia",
+    "emit-module-dependencies" : "/Users/francisco/dev/sound_analysis_flutter_plugin/example/ios/build/Pods.build/Release-iphoneos/sound_analysis_flutter_plugin.build/Objects-normal/arm64/sound_analysis_flutter_plugin-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/francisco/dev/sound_analysis_flutter_plugin/example/ios/build/Pods.build/Release-iphoneos/sound_analysis_flutter_plugin.build/Objects-normal/arm64/sound_analysis_flutter_plugin-master-emit-module.dia",
+    "swift-dependencies" : "/Users/francisco/dev/sound_analysis_flutter_plugin/example/ios/build/Pods.build/Release-iphoneos/sound_analysis_flutter_plugin.build/Objects-normal/arm64/sound_analysis_flutter_plugin-master.swiftdeps"
+  },
+  "/Users/francisco/dev/sound_analysis_flutter_plugin/ios/Classes/SoundAnalysisFlutterPlugin.swift" : {
+    "index-unit-output-path" : "/Pods.build/Release-iphoneos/sound_analysis_flutter_plugin.build/Objects-normal/arm64/SoundAnalysisFlutterPlugin.o",
+    "llvm-bc" : "/Users/francisco/dev/sound_analysis_flutter_plugin/example/ios/build/Pods.build/Release-iphoneos/sound_analysis_flutter_plugin.build/Objects-normal/arm64/SoundAnalysisFlutterPlugin.bc",
+    "object" : "/Users/francisco/dev/sound_analysis_flutter_plugin/example/ios/build/Pods.build/Release-iphoneos/sound_analysis_flutter_plugin.build/Objects-normal/arm64/SoundAnalysisFlutterPlugin.o"
+  },
+  "/Users/francisco/dev/sound_analysis_flutter_plugin/ios/Classes/SystemAudioClassifier.swift" : {
+    "index-unit-output-path" : "/Pods.build/Release-iphoneos/sound_analysis_flutter_plugin.build/Objects-normal/arm64/SystemAudioClassifier.o",
+    "llvm-bc" : "/Users/francisco/dev/sound_analysis_flutter_plugin/example/ios/build/Pods.build/Release-iphoneos/sound_analysis_flutter_plugin.build/Objects-normal/arm64/SystemAudioClassifier.bc",
+    "object" : "/Users/francisco/dev/sound_analysis_flutter_plugin/example/ios/build/Pods.build/Release-iphoneos/sound_analysis_flutter_plugin.build/Objects-normal/arm64/SystemAudioClassifier.o"
+  }
+}
