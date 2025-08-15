@@ -5,7 +5,7 @@ import 'package:sound_classification/sound_classification_flutter_plugin.dart';
 import 'package:barknito/sound_eventization/sound_events_manager.dart';
 import 'package:barknito/first_bark/first_bark_state.dart';
 import 'package:barknito/first_bark/blinking_dot.dart';
-import 'package:barknito/typography.dart';
+import 'package:barknito/ui/typography.dart';
 
 class FirstBarkPage extends BaseBarkPage {
   final PageController pageController;
@@ -36,7 +36,6 @@ class _FirstBarkPageState extends BaseBarkPageState<FirstBarkPage> {
   }
 
   void _setupGameState() {
-    print('setupGameState');
     _state = FirstBarkState(pageController: widget.pageController);
     _state.startSession();
     _stateListener = () => setState(() {});
@@ -44,7 +43,6 @@ class _FirstBarkPageState extends BaseBarkPageState<FirstBarkPage> {
   }
 
   void _teardownGameState() {
-    print('teardownGameState');
     _state.removeListener(_stateListener);
     _state.endSession();
   }

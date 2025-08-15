@@ -1,10 +1,62 @@
+import 'package:barknito/five_barks/five_barks_state.dart';
+import 'package:barknito/game_state/user_instruction.dart';
+import 'package:barknito/ui/progress_masked_image.dart';
 import 'package:flutter/material.dart';
 
 import 'package:sound_classification/sound_classification_flutter_plugin.dart';
 import 'package:barknito/sound_eventization/sound_events_manager.dart';
 import 'package:barknito/first_bark/first_bark_state.dart';
 import 'package:barknito/first_bark/blinking_dot.dart';
-import 'package:barknito/typography.dart';
+import 'package:barknito/ui/typography.dart';
+
+class InstructionWidget extends StatelessWidget {
+  final bool isActive;
+  final String imagePath;
+  final bool useOpacity;
+  final double progress;
+  const InstructionWidget({
+    Key? key,
+    required this.isActive,
+    required this.imagePath,
+    this.useOpacity = true,
+    this.progress = 1.0,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    const double activeSize = 200.0;
+    const double inactiveSize = 100.0;
+    final size = isActive ? activeSize : inactiveSize;
+
+    Widget image = ProgressMaskedImage(
+      assetPath: imagePath,
+      progress: progress,
+    );
+
+    if (useOpacity) {
+      image = Opacity(
+        opacity: isActive ? 1.0 : 0.2,
+        child: image,
+      );
+    }
+
+    return SizedBox(
+      width: size,
+      height: size,
+      child: image,
+    );
+  }
+}
+
+class InstructionConfig {
+  final String imagePath;
+  final bool useOpacity;
+
+  const InstructionConfig({
+    required this.imagePath,
+    this.useOpacity = true,
+  });
+}
 
 class FiveBarksPage extends StatefulWidget {
   final PageController pageController;
@@ -16,7 +68,7 @@ class FiveBarksPage extends StatefulWidget {
 
 class _FiveBarksPageState extends State<FiveBarksPage> {
   late final BarkDetectionManager _barkDetectionManager;
-  late final FirstBarkState _state;
+  late final FiveBarksState _state;
   late final VoidCallback _stateListener;
 
   @override
@@ -34,15 +86,13 @@ class _FiveBarksPageState extends State<FiveBarksPage> {
   }
 
   void _setupGameState() {
-    print('setupGameState');
-    _state = FirstBarkState(pageController: widget.pageController);
+    _state = FiveBarksState(pageController: widget.pageController);
     _state.startSession();
     _stateListener = () => setState(() {});
     _state.addListener(_stateListener);
   }
 
   void _teardownGameState() {
-    print('teardownGameState');
     _state.removeListener(_stateListener);
     _state.endSession();
   }
@@ -67,83 +117,92 @@ class _FiveBarksPageState extends State<FiveBarksPage> {
           children: [
             const BlinkingDot(),
             const SizedBox(height: 32),
-            Row(
+            Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(
-                  width: 100,
-                  height: 100,
-                  child: Image.asset('assets/images/bark.png'),
+                InstructionWidget(
+                  isActive:
+                      _state.userInstruction == UserInstruction.makeDogBark,
+                  imagePath: 'assets/images/bark.png',
+                  useOpacity: false,
                 ),
-                SizedBox(
-                  width: 100,
-                  height: 100,
-                  child: Image.asset('assets/images/fire.png'),
+                InstructionWidget(
+                  isActive: _state.userInstruction == UserInstruction.reward,
+                  imagePath: 'assets/images/reward.png',
+                  progress: _state.rewardProgress ?? 1.0,
                 ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(
-                  width: 100,
-                  height: 100,
-                  child: Image.asset('assets/images/bark.png'),
+                // if (_state.userInstruction == UserInstruction.reward)
+                //   LinearProgressIndicator(
+                //     minHeight: 20,
+                //     value: _state.rewardProgress,
+                //     color: Colors.white,
+                //     backgroundColor: Colors.white.withOpacity(0.2),
+                //   ),
+                InstructionWidget(
+                  isActive: _state.userInstruction ==
+                          UserInstruction.makeDogSilence ||
+                      _state.userInstruction == UserInstruction.restartSilence,
+                  imagePath: _state.isBarking()
+                      ? 'assets/images/bark-black.png'
+                      : 'assets/images/nito.png',
+                  progress: _state.silenceProgress ?? 1.0,
                 ),
-                SizedBox(
-                  width: 100,
-                  height: 100,
-                  child: Image.asset('assets/images/fire.png'),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(
-                  width: 100,
-                  height: 100,
-                  child: Image.asset('assets/images/bark.png'),
-                ),
-                SizedBox(
-                  width: 100,
-                  height: 100,
-                  child: Image.asset('assets/images/fire.png'),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(
-                  width: 100,
-                  height: 100,
-                  child: Image.asset('assets/images/bark.png'),
-                ),
-                SizedBox(
-                  width: 100,
-                  height: 100,
-                  child: Image.asset('assets/images/fire.png'),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(
-                  width: 100,
-                  height: 100,
-                  child: Image.asset('assets/images/bark.png'),
-                ),
-                SizedBox(
-                  width: 100,
-                  height: 100,
-                  child: Image.asset('assets/images/fire.png'),
-                ),
+                // if (_state.userInstruction == UserInstruction.makeDogSilence ||
+                //     _state.userInstruction == UserInstruction.restartSilence)
+                //   LinearProgressIndicator(
+                //     value: _state.silenceProgress,
+                //     color: Colors.white,
+                //     backgroundColor: Colors.white.withOpacity(0.2),
+                //   ),
               ],
             ),
             const NarrationWhite(
-              'Five more barks with silence between them were required to prove intention',
+              'Five more barks. Each rewarded and followed by silence.',
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  width: 70,
+                  height: 70,
+                  child: Image(
+                      image: _state.tasksCompleted < 1
+                          ? AssetImage('assets/images/nito.png')
+                          : AssetImage('assets/images/bark.png')),
+                ),
+                SizedBox(
+                  width: 70,
+                  height: 70,
+                  child: Image(
+                      image: _state.tasksCompleted < 2
+                          ? AssetImage('assets/images/nito.png')
+                          : AssetImage('assets/images/bark.png')),
+                ),
+                SizedBox(
+                  width: 70,
+                  height: 70,
+                  child: Image(
+                      image: _state.tasksCompleted < 3
+                          ? AssetImage('assets/images/nito.png')
+                          : AssetImage('assets/images/bark.png')),
+                ),
+                SizedBox(
+                  width: 70,
+                  height: 70,
+                  child: Image(
+                      image: _state.tasksCompleted < 4
+                          ? AssetImage('assets/images/nito.png')
+                          : AssetImage('assets/images/bark.png')),
+                ),
+                SizedBox(
+                  width: 70,
+                  height: 70,
+                  child: Image(
+                      image: _state.tasksCompleted < 5
+                          ? AssetImage('assets/images/nito.png')
+                          : AssetImage('assets/images/bark.png')),
+                ),
+              ],
             ),
           ],
         ),

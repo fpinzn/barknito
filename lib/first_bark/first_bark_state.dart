@@ -1,4 +1,5 @@
 import 'package:barknito/game_state/game_state.dart';
+import 'package:barknito/global_definitions.dart';
 import 'package:flutter/material.dart';
 
 class FirstBarkState extends GameState {
@@ -11,7 +12,7 @@ class FirstBarkState extends GameState {
   @override
   void addTaskCompleted(String task) {
     super.addTaskCompleted(task);
-    if (task == GameState.BARK_TASK_NAME && !_advanced) {
+    if (task == GameState.TASK_BARK && !_advanced) {
       _advanced = true;
       pageController.nextPage(
         duration: const Duration(milliseconds: 300),
@@ -23,8 +24,8 @@ class FirstBarkState extends GameState {
   @override
   addSoundClassification(String sound) {
     super.addSoundClassification(sound);
-    if (sound == 'dog') {
-      addTaskCompleted(GameState.BARK_TASK_NAME);
+    if (VALID_BARKS.contains(sound)) {
+      addTaskCompleted(GameState.TASK_BARK);
     }
   }
 }

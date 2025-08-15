@@ -1,0 +1,1 @@
+const VALID_BARKS = ['dog']; // 'dog_bark'
